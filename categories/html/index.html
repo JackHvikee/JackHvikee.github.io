@@ -174,7 +174,7 @@ ga('send', 'pageview');
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://boyinsnow.xyz/hahah.html">0</span>
+        <span><a href="http://boyinsnow.xyz/hahah.html#isso-thread"></a></span>
     
 </span>
 
@@ -220,7 +220,7 @@ ga('send', 'pageview');
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://boyinsnow.xyz/posthtml.html">0</span>
+        <span><a href="http://boyinsnow.xyz/posthtml.html#isso-thread"></a></span>
     
 </span>
 
@@ -472,17 +472,25 @@ ga('send', 'pageview');
     </div>
     
     
+    <script src="//unpkg.com/valine"></script>
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+        var GUEST = ['nick','mail','link'];
+        var meta = '';
+        meta = meta.split(',').filter(function (item) {
+            return GUEST.indexOf(item)>-1;
+        });
+        var avatarcdn = 'https://gravatar.loli.net/avatar/' == true;
+        new Valine({
+            el: '.vcomments',
+            notify: "true",
+            verify: "",
+            appId: "7B5WsBYFFqib4RCLgv1qDVQH-gzGzoHsz",
+            appKey: "WctPILnKcnlOMztAYhbRwVY8",
+            placeholder: "如果你心里闪过一瞬想法,别犹豫",
+            avatar:"identicon",
+            recordIP:"",
+            visitor: "true"
+        });
     </script>
 
 

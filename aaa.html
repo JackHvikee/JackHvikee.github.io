@@ -10,10 +10,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="Time,uni">
+    <meta name="keywords" content="uni,Time">
     
     <meta name="description" content="It’s been a long time no posts on Hexo, it’s like a freshman’s gone in a blink of an eye. I don’t knnow what I did in the half year, actually, this is not what I want, I can’t spend my life like this.">
-<meta name="keywords" content="Time,uni">
+<meta name="keywords" content="uni,Time">
 <meta property="og:type" content="article">
 <meta property="og:title" content="It&#39;s been a long time...">
 <meta property="og:url" content="http://boyinsnow.xyz/aaa.html">
@@ -187,6 +187,12 @@ ga('send', 'pageview');
     </div>
 
                 
+   <span id="/aaa.html" class="leancloud-visitors" data-flag-title="It&#39;s been a long time...">
+   <i class="fa fa-eye"></i>
+   <span class="post-meta-item-text">Views: </span>
+   <i class="leancloud-visitors-count">1000000</i>
+   </span>
+
 
                 
 
@@ -202,7 +208,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="http://boyinsnow.xyz/aaa.html" data-id="cka21vzfx0009crjbaupwf23q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://boyinsnow.xyz/aaa.html" data-id="cka2ezpuy000gowshuhifmwz0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -274,7 +280,7 @@ ga('send', 'pageview');
         },
         "headline": "It&#39;s been a long time...",
         "image": "http://boyinsnow.xyzhttps://s1.ax1x.com/2020/05/07/YmVlA1.md.jpg",
-        "keywords": "Time uni",
+        "keywords": "uni Time",
         "genre": "school",
         "datePublished": "2019-12-12",
         "dateCreated": "2019-12-12",
@@ -290,9 +296,8 @@ ga('send', 'pageview');
     <section id="comments">
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+    <!-- Valine -->
+    <div class="vcomments"></div>
 
 
     
@@ -538,19 +543,25 @@ ga('send', 'pageview');
     </div>
     
     
+    <script src="//unpkg.com/valine"></script>
     <script>
-    var disqus_shortname = 'hexo-theme-hueman';
-    
-    
-    var disqus_url = 'http://boyinsnow.xyz/aaa.html';
-    
-    (function() {
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
+        var GUEST = ['nick','mail','link'];
+        var meta = '';
+        meta = meta.split(',').filter(function (item) {
+            return GUEST.indexOf(item)>-1;
+        });
+        var avatarcdn = 'https://gravatar.loli.net/avatar/' == true;
+        new Valine({
+            el: '.vcomments',
+            notify: "true",
+            verify: "",
+            appId: "7B5WsBYFFqib4RCLgv1qDVQH-gzGzoHsz",
+            appKey: "WctPILnKcnlOMztAYhbRwVY8",
+            placeholder: "如果你心里闪过一瞬想法,别犹豫",
+            avatar:"identicon",
+            recordIP:"",
+            visitor: "true"
+        });
     </script>
 
 
