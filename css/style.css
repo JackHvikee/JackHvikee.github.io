@@ -229,7 +229,7 @@ body,
   background: #006bde;
 }
 body {
-  background: #0a141e;
+  background: #060508;
   font: 14px "Titillium Web", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
   -webkit-text-size-adjust: 100%;
 }
@@ -344,7 +344,7 @@ code {
   clear: both;
 }
 #header {
-  background: url("https://s1.ax1x.com/2020/05/11/YGMOt1.jpg") center #000;
+  background: url("https://s1.ax1x.com/2020/05/13/YUqI2t.png") center #000;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -360,7 +360,7 @@ code {
 }
 #header-title {
   text-align: center;
-  padding: 70px 0px;
+  padding: 125px 0px;
 }
 #header-title:before,
 #header-title:after {
@@ -1264,7 +1264,7 @@ a.article-title:hover {
   line-height: 1em;
   padding: 6px 15px;
   border-radius: 15px;
-  background: #0a141e;
+  background: #060508;
   color: #aaa;
   text-shadow: 0 1px #fff;
   text-decoration: none;
@@ -1338,7 +1338,7 @@ a.article-title:hover {
   line-height: 36px;
 }
 .article-share-links {
-  background: #0a141e;
+  background: #060508;
 }
 .article-share-links:before,
 .article-share-links:after {
@@ -1625,7 +1625,7 @@ a.article-title:hover {
   color: #ddd;
 }
 #footer {
-  background: #0a141e;
+  background: #060508;
   margin-top: 60px;
   color: #aaa;
   line-height: 1.6em;
@@ -1644,7 +1644,7 @@ a.article-title:hover {
   padding: 0px 30px 30px 30px;
 }
 #footer #back-to-top {
-  background: #0a141e;
+  background: #060508;
   color: #777;
   overflow: hidden;
   text-align: center;
