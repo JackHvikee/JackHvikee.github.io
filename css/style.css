@@ -850,10 +850,12 @@ code {
   background-position: center;
 }
 #recent-post li .item-thumbnail .thumbnail .thumbnail-none {
-  background-image: url("https://s1.ax1x.com/2020/05/07/YmFtdx.md.jpg");
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  background-size: 100% 100%;
+  background-image: url("https://s1.ax1x.com/2020/05/07/YmFtdx.jpg");
+  position: absolute;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-position: center;
 }
 #recent-post li .item-inner a,
 #recent-post li .item-inner .item-category {
@@ -1007,12 +1009,16 @@ code {
   transition: opacity 0.3s ease-in;
 }
 .article-summary .article-summary-inner .thumbnail .thumbnail-none {
+  display: block;
+  position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-background-size: 100% 100%;
-  -moz-background-size: 100% 100%;
-  background-size: 100% 100%;
-  background-image: url("images/thumb-default.png");
+  opacity: 1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-image: url("https://s1.ax1x.com/2020/05/07/YmFtdx.jpg");
+  background-position: center;
 }
 .article-summary .article-summary-inner .article-title {
   margin-bottom: 10px;
