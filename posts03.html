@@ -6,17 +6,24 @@
     
 
     
-    <title>Category: Hexo | 被雪天困住的大孩子</title>
+    <title>const -&gt; pointer | 被雪天困住的大孩子</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="被雪天困住的大孩子">
-<meta property="og:url" content="http://boyinsnow.xyz/categories/Hexo/index.html">
+    <meta name="keywords" content="school">
+    
+    <meta name="description" content="Const was used with Pointer.  The first case: The address which Pointer contained is a Constant, Can’t be changed, but you can change the Data pointed to: 12345int daysInMonth = 30;int * const pDaysIn">
+<meta name="keywords" content="school">
+<meta property="og:type" content="article">
+<meta property="og:title" content="const -&gt; pointer">
+<meta property="og:url" content="http://boyinsnow.xyz/posts03.html">
 <meta property="og:site_name" content="被雪天困住的大孩子">
+<meta property="og:description" content="Const was used with Pointer.  The first case: The address which Pointer contained is a Constant, Can’t be changed, but you can change the Data pointed to: 12345int daysInMonth = 30;int * const pDaysIn">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-03-29T01:04:09.519Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="被雪天困住的大孩子">
+<meta name="twitter:title" content="const -&gt; pointer">
+<meta name="twitter:description" content="Const was used with Pointer.  The first case: The address which Pointer contained is a Constant, Can’t be changed, but you can change the Data pointed to: 12345int daysInMonth = 30;int * const pDaysIn">
     
 
     
@@ -140,74 +147,174 @@ ga('send', 'pageview');
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-folder-open"></i>Category: <em class="page-title-link">Hexo</em>
+    <a class="page-title-link" href="/categories/c/">c++</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-posts03" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/h2.html" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://s1.ax1x.com/2020/05/07/YmFtdx.md.jpg)" alt="HEXO Username&amp;password Forced Solution" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span><a href="http://boyinsnow.xyz/h2.html#isso-thread"></a></span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-            </div>
-            <div class="date"><time datetime="2020-05-06T06:09:32.000Z" itemprop="datePublished">2020-05-06</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/h2.html">HEXO Username&amp;password Forced Solution</a>
+        const -&gt; pointer
         </h1>
     
 
-        <p class="article-excerpt">
-            Today morning I got an idea that maybe I can change my blog’s theme to something good-looking, so I looked at a theme that makes me happy with it. And I cloned it into my blog and when I was trying to
-        </p>
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/posts03.html" class="article-date">
+         <time datetime="2021-03-28T13:00:44.000Z" itemprop="datePublished">2021-03-28</time>
+      </a>
     </div>
-</article>
-    
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/school/">school</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>Const was used with Pointer.</p>
+<ul>
+<li><p>The first case:</p>
+<p>The address which Pointer contained is a Constant, Can’t be changed, but you can change the Data pointed to:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> daysInMonth = <span class="number">30</span>;</span><br><span class="line"><span class="keyword">int</span> * <span class="keyword">const</span> pDaysInMonth = &amp;daysInMonth;</span><br><span class="line">*pDaysInMonth = <span class="number">31</span>; <span class="comment">//This is ok, Data pointed to can be changed</span></span><br><span class="line"><span class="keyword">int</span> daysInLunarMonth = <span class="number">28</span>;</span><br><span class="line">pDaysInMonth = &amp;daysInLunarMonth; <span class="comment">//This is shit, Cannot change address!</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>The second cace:</p>
+<p>Data pointed to is Constant, can’t be changed, but you can change the address which Pointer contained, and that means the Pointer can pointer to another variable:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hoursInday = <span class="number">24</span>;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">int</span>* pointsToInt = &amp;housday;</span><br><span class="line">  <span class="keyword">int</span> mouthInYear = <span class="number">12</span>;</span><br><span class="line">  pointsToInt = &amp;monthsInYear;</span><br><span class="line">  *pointsToInt = <span class="number">13</span>; <span class="comment">//Not OK! Cannot change data being pointed to</span></span><br><span class="line">  <span class="keyword">int</span>* newPointer = pointsToInt; <span class="comment">//Not OK! cannot assign const to non-const</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li><p>The third cace:</p>
+<p>Both Address that Pointer contains and Variable It pointer to is Constant, cannot be changed.(which is the most rigorous)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> hoursInDay = <span class="number">24</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>* <span class="keyword">const</span> pHousInDay = &amp;hoursInDay;</span><br><span class="line">*pHoursInDay = <span class="number">25</span>; <span class="comment">//Not OK! Cannot change data being pointed to</span></span><br><span class="line"><span class="keyword">int</span> daysInMonth = <span class="number">30</span>;</span><br><span class="line">pHoursInDay = &amp;daysInMonth; <span class="comment">//Not OK! Cannot change address</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>Pass the pointer to the function.</p>
+<p>When a pointer was used as a function argument, it’s important that Function only can change arguments that you hope to change.For example, when you passed a radius to calculate area of a circle, it can’t be changed. YOU CAN USE CONST.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">CalcArea</span><span class="params">(<span class="keyword">const</span> <span class="keyword">double</span>* <span class="keyword">const</span> ptrPi, <span class="keyword">const</span> <span class="keyword">double</span>* <span class="keyword">const</span> ptrRadius, <span class="keyword">double</span>* <span class="keyword">const</span> ptr Area)</span><span class="comment">//const pointer to const data, no changes allowed, can change data pointed to</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(ptrPi &amp;&amp; ptrRadius &amp;&amp; ptrArea)</span><br><span class="line">    *ptrArea = (*ptrPi) * (*ptrRadius) * (*ptrRadius);</span><br><span class="line">  	<span class="comment">//Pay attention to Product sign 'x' and indirect operater '*'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="keyword">double</span> Pi = <span class="number">3.14159265358979323846</span>;</span><br><span class="line">  <span class="keyword">double</span> radius = <span class="number">0</span>;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; radius;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">double</span> area = <span class="number">0</span>;</span><br><span class="line">  CalcArea (&amp;Pi, &amp;radius, &amp;area);</span><br><span class="line">  <span class="comment">//only area can be changed in func;</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
         </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://boyinsnow.xyz/posts03.html" data-id="ckmtw2dfl001m076ocqodjykm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jack"
+        },
+        "headline": "const -&gt; pointer",
+        "image": "http://boyinsnow.xyz",
+        "keywords": "school",
+        "genre": "c++",
+        "datePublished": "2021-03-28",
+        "dateCreated": "2021-03-28",
+        "dateModified": "2021-03-29",
+        "url": "http://boyinsnow.xyz/posts03.html",
+        "description": "Const was used with Pointer.
+
+The first case:
+The address which Pointer contained is a Constant, Can’t be changed, but you can change the Data pointed to:
+12345int daysInMonth = 30;int * const pDaysIn",
+        "wordCount": 451
+    }
+</script>
+
+</article>
+
+    <section id="comments">
     
-
-
-    </div></section>
-
+    </section>
 
 
 
@@ -237,6 +344,19 @@ ga('send', 'pageview');
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/post-posts02.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">dec、hex、oct</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
