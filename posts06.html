@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>Copy Constructor | 被雪天困住的大孩子</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="school">
+    
+    <meta name="description" content="For a Function Area(), argument passed is copied: 1Double Area(double radius);  So, when invoking Area(), argument is copied to parameter , the rule can also be used in (instance of class)  Shallow co">
+<meta name="keywords" content="school">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Copy Constructor">
+<meta property="og:url" content="http://boyinsnow.xyz/posts06.html">
+<meta property="og:site_name" content="被雪天困住的大孩子">
+<meta property="og:description" content="For a Function Area(), argument passed is copied: 1Double Area(double radius);  So, when invoking Area(), argument is copied to parameter , the rule can also be used in (instance of class)  Shallow co">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2021-04-05T12:46:05.893Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Copy Constructor">
+<meta name="twitter:description" content="For a Function Area(), argument passed is copied: 1Double Area(double radius);  So, when invoking Area(), argument is copied to parameter , the rule can also be used in (instance of class)  Shallow co">
+    
+
+    
+
+    
+        <link rel="icon" href="https://s1.ax1x.com/2020/05/09/YlKMCD.png">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-165969910-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">日が落ちるまで</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/c/">c++</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-posts06" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Copy Constructor
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/posts06.html" class="article-date">
+         <time datetime="2021-04-05T03:08:44.000Z" itemprop="datePublished">2021-04-05</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/school/">school</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>For a Function Area(), argument passed is copied:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Double <span class="title">Area</span><span class="params">(<span class="keyword">double</span> radius)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>So, when invoking Area(), argument is copied to parameter <radius>, the rule can also be used in <object>(instance of class)</object></radius></p>
+<ul>
+<li><p>Shallow copy and its problems</p>
+<p>There is a <new> and there is a <delete></delete></new></p>
+<p>But now I wanna copy the object, in the same time, we copied its pointer member, but we have no way to copy the buffer area that the pointer pointed, which will result in two objects point one memory allocated dynamically. When you destroy one of them, &lt;delete[]&gt; wile release the memory block, cause the copy of pointer that another object stored invalid. THIS is called Shallow Copy.</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mystring</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">  	<span class="keyword">char</span>* buffer;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  	Mystring(<span class="keyword">const</span> <span class="keyword">char</span>* inistString) <span class="comment">//Constructor</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="keyword">if</span>(initString != <span class="literal">NULL</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        buffer = <span class="keyword">new</span> <span class="keyword">char</span>(<span class="built_in">strlen</span>(initString) + <span class="number">1</span>); <span class="comment">//Allocating memory</span></span><br><span class="line">        <span class="built_in">strcpy</span>(buffer, initString);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        buffer = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> 	 ~Mystring() <span class="comment">//Destructor</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"invoking destructor, clearing up"</span> &lt;&lt; end;</span><br><span class="line">			<span class="keyword">if</span>(buffer != <span class="literal">NULL</span>)</span><br><span class="line">					<span class="keyword">delete</span> [] buffer;</span><br><span class="line">		&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">GetLength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strlen</span>(buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">GetString</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> buffer;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//Use function rather than int func</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UseMyString</span><span class="params">(MyString str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"String buffer in sayHello is "</span>&lt;&lt; str.GetLength();</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">" characters long"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"buffer contains: "</span>&lt;&lt; str.GetString()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="function">MyString <span class="title">sayHello</span><span class="params">(<span class="string">"Hello from String class"</span>)</span></span>;</span><br><span class="line">  UseMyString(sayHello);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//OutPut:</span></span><br><span class="line"><span class="comment">///String buffer in MyString is 23 characters long</span></span><br><span class="line"><span class="comment">//buffer contains: Hello from String Class</span></span><br><span class="line"><span class="comment">//Invoking destructor, clearing up</span></span><br><span class="line"><span class="comment">//Invoking destructor, clearing up</span></span><br><span class="line"><span class="comment">//&lt;crash as seen in screen&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Make sure deep copy</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyString</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  MyString (<span class="keyword">const</span> MyString&amp; copySource); <span class="comment">//copy constructor</span></span><br><span class="line">  MyString (<span class="keyword">const</span> MyString copySource)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="comment">//Copy constructor implementation code</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mystring</span> </span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">  	<span class="keyword">char</span>* buffer;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">  	Mystring(<span class="keyword">const</span> <span class="keyword">char</span>* inistString) <span class="comment">//Constructor</span></span><br><span class="line">    &#123;</span><br><span class="line">      buffer = <span class="literal">NULL</span>;</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Default constructor: creating new MyString"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">      <span class="keyword">if</span>(initString != <span class="literal">NULL</span>)</span><br><span class="line">      &#123;</span><br><span class="line">        buffer = <span class="keyword">new</span> <span class="keyword">char</span>(<span class="built_in">strlen</span>(initString) + <span class="number">1</span>); <span class="comment">//Allocating memory</span></span><br><span class="line">        <span class="built_in">strcpy</span>(buffer, initString);</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"buffer points to: 0X"</span>&lt;&lt;hex;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">unsigned</span> <span class="keyword">int</span>*)buffer &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  MyString(<span class="keyword">const</span> MyString &amp; copySource)<span class="comment">//copy constructor</span></span><br><span class="line">  &#123;</span><br><span class="line">    buffer = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Copy constructor: copying from MyString"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span>(copySource.buffer != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="comment">//allocate own buffer</span></span><br><span class="line">      buffer = <span class="keyword">new</span> <span class="keyword">char</span> [<span class="built_in">strlen</span>(copySource.buffer) + <span class="number">1</span>];</span><br><span class="line">      </span><br><span class="line">      <span class="comment">//deep copy from the source into local buffer</span></span><br><span class="line">      <span class="built_in">strcpy</span>(buffer, copySource.buffer);</span><br><span class="line">     <span class="built_in">cout</span> &lt;&lt; <span class="string">"buffer points to: 0X"</span> &lt;&lt;hex;</span><br><span class="line">     <span class="built_in">cout</span> &lt;&lt; (<span class="keyword">unsigned</span> <span class="keyword">int</span>*)buffer &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line"> 	 ~Mystring() <span class="comment">//Destructor</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="string">"invoking destructor, clearing up"</span> &lt;&lt; end;</span><br><span class="line">			<span class="keyword">if</span>(buffer != <span class="literal">NULL</span>)</span><br><span class="line">					<span class="keyword">delete</span> [] buffer;</span><br><span class="line">		&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">GetLength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">strlen</span>(buffer);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">GetString</span><span class="params">()</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> buffer;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//Use function rather than int func</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">UseMyString</span><span class="params">(MyString str)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"String buffer in sayHello is "</span>&lt;&lt; str.GetLength();</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">" characters long"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  </span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; <span class="string">"buffer contains: "</span>&lt;&lt; str.GetString()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">  <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="function">MyString <span class="title">sayHello</span><span class="params">(<span class="string">"Hello from String class"</span>)</span></span>;</span><br><span class="line">  UseMyString(sayHello);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Output:</span></span><br><span class="line"><span class="comment">//Default constructor</span></span><br><span class="line"><span class="comment">//buffer points to:</span></span><br><span class="line"><span class="comment">//copy constructor: copying from MyString</span></span><br><span class="line"><span class="comment">//buffer points to:</span></span><br><span class="line"><span class="comment">//String buffer in MyString is 17 characters long</span></span><br><span class="line"><span class="comment">//buffer containsL Hello from String Class</span></span><br><span class="line"><span class="comment">//Invoking destructor, clearing up</span></span><br><span class="line"><span class="comment">//Invoking destructor, clearing up</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>What you should do:</p>
+<ul>
+<li><p>Class contains Primitive pointer menmber(char*), you must write Copy constructor and Copy assignment operator.</p>
+</li>
+<li><p>When writing Copy constructor, you must make the parameter that accept source object is declared as a <const> reference.</const></p>
+</li>
+<li><p>When declaring constructor you must consider using keyword <explicit>, which will  avoid implicit conversation.</explicit></p>
+</li>
+<li><p>You must declare class members to std::String-like and Smart pointer class(rather than Primitive pointer), cause that the constructor is implemented, which can help you work easier.</p>
+<ul>
+<li><p>What you shouldn’t do</p>
+<p> Do not declare class members as Primitive pointer. </p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://boyinsnow.xyz/posts06.html" data-id="ckn4m3hiv0001i16olp89ukus" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jack"
+        },
+        "headline": "Copy Constructor",
+        "image": "http://boyinsnow.xyz",
+        "keywords": "school",
+        "genre": "c++",
+        "datePublished": "2021-04-05",
+        "dateCreated": "2021-04-05",
+        "dateModified": "2021-04-05",
+        "url": "http://boyinsnow.xyz/posts06.html",
+        "description": "For a Function Area(), argument passed is copied:
+1Double Area(double radius);
+
+So, when invoking Area(), argument is copied to parameter , the rule can also be used in (instance of class)
+
+Shallow co",
+        "wordCount": 1261
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/JackHvikee" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="envelope" href="mailto:loyo8490@gmail.com" target="_blank" rel="noopener">
+                        <i class="icon fa fa-envelope"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/posts05.html" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Destructor</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/posts06.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/c/">c++</a></p>
+                            <p class="item-title"><a href="/posts06.html" class="title">Copy Constructor</a></p>
+                            <p class="item-date"><time datetime="2021-04-05T03:08:44.000Z" itemprop="datePublished">2021-04-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/posts05.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/c/">c++</a></p>
+                            <p class="item-title"><a href="/posts05.html" class="title">Destructor</a></p>
+                            <p class="item-date"><time datetime="2021-04-05T02:27:44.000Z" itemprop="datePublished">2021-04-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/posts04.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/c/">c++</a></p>
+                            <p class="item-title"><a href="/posts04.html" class="title">Constructor</a></p>
+                            <p class="item-date"><time datetime="2021-04-01T13:37:44.000Z" itemprop="datePublished">2021-04-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/posts03.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/c/">c++</a></p>
+                            <p class="item-title"><a href="/posts03.html" class="title">const -&gt; pointer</a></p>
+                            <p class="item-date"><time datetime="2021-03-28T13:00:44.000Z" itemprop="datePublished">2021-03-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/post-posts02.html" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/c/">c++</a></p>
+                            <p class="item-title"><a href="/post-posts02.html" class="title">dec、hex、oct</a></p>
+                            <p class="item-date"><time datetime="2021-03-28T12:27:12.000Z" itemprop="datePublished">2021-03-28</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/c/">c++</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/feels/">feels</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/html/">html</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/school/">school</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/sky/">sky</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/uni/">uni</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/wintert/">wintert</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/2020/">2020</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/school/">school</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/solution/">solution</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/some-feelings/">some feelings</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/uni/">uni</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/university/">university</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学校/">学校</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/2020/" style="font-size: 13.33px;">2020</a> <a href="/tags/C/" style="font-size: 13.33px;">C</a> <a href="/tags/Time/" style="font-size: 13.33px;">Time</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 13.33px;">html</a> <a href="/tags/school/" style="font-size: 16.67px;">school</a> <a href="/tags/solution/" style="font-size: 10px;">solution</a> <a href="/tags/some-feelings/" style="font-size: 10px;">some feelings</a> <a href="/tags/uni/" style="font-size: 20px;">uni</a> <a href="/tags/university/" style="font-size: 10px;">university</a> <a href="/tags/学校/" style="font-size: 10px;">学校</a>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2021 Jack</p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+</body>
+</html>
