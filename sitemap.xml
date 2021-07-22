@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://boyinsnow.xyz/favorite/my.html</loc>
+    <loc>http://boyinsnow.xyz/about/about.html</loc>
     
-    <lastmod>2021-07-22T05:22:38.304Z</lastmod>
+    <lastmod>2021-07-22T06:18:20.025Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://boyinsnow.xyz/friend/my.html</loc>
+    
+    <lastmod>2021-07-22T05:29:09.768Z</lastmod>
     
   </url>
   
@@ -257,13 +264,6 @@
     <loc>http://boyinsnow.xyz/tags/index.html</loc>
     
     <lastmod>2019-10-10T14:34:08.621Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://boyinsnow.xyz/about/index.html</loc>
-    
-    <lastmod>2019-09-03T14:32:30.620Z</lastmod>
     
   </url>
   
